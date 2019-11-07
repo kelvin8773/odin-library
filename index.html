@@ -20,6 +20,7 @@
 
     <title>Odin Library</title>
   </head>
+
   <body>
     <nav class="navbar navbar-dark bg-secondary flex justify-content-center">
       <a class="navbar-brand font-weight-bold" href="/"
@@ -38,6 +39,19 @@
       >
         Add Books to Library
       </button>
+
+      <hr class="my-3" />
+
+      <div class="row">
+        <header class="col">
+          <h2 class="h2">Books</h2>
+        </header>
+      </div>
+      <div class="row">
+        <div class="col">
+          <section class="books"></section>
+        </div>
+      </div>
 
       <!-- add book modal   -->
       <div
@@ -62,39 +76,57 @@
               </button>
             </div>
             <div class="modal-body">
-              <form id="addBookForm">
+              <form class="add-book-form">
                 <div class="form-group">
-                  <label for="book-title" class="col-form-label"
-                    >Book Title:</label
-                  >
-                  <input type="text" class="form-control" id="book-title" />
-                </div>
-                <div class="form-group">
-                  <label for="book-author" class="col-form-label">Author</label>
-                  <input type="text" class="form-control" id="book-author" />
+                  <label for="title" class="col-form-label">Book Title:</label>
+                  <input type="text" class="form-control" name="title" />
                 </div>
 
                 <div class="form-group">
-                  <label for="book-page-number" class="col-form-label"
+                  <label for="genre" class="col-form-label">Genre</label>
+
+                  <select multiple name="genre" class="form-control">
+                    <option value="classic">Classic</option>
+                    <option value="novel">Novel</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="author" class="col-form-label">Author</label>
+                  <input type="text" class="form-control" name="author" />
+                </div>
+
+                <div class="form-group">
+                  <label for="description" class="col-form-label"
+                    >description:</label
+                  >
+                  <textarea class="form-control" name="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="price" class="col-form-label">Price: </label>
+                  <input type="number" class="form-control" name="price" />
+                </div>
+
+                <div class="form-group">
+                  <label for="numOfPages" class="col-form-label"
                     >Number of Pages</label
                   >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="book-page-number"
-                  />
+                  <input type="number" class="form-control" name="numOfPages" />
                 </div>
 
                 <div class="form-group">
-                  <label for="user-read-status" class="col-form-label"
-                    >Read Status</label
-                  >
+                  <label for="read_status" class="col-form-label"
+                    >Read Status:
+                  </label>
                   <input
                     type="radio"
-                    name="user-read-status"
+                    name="read_status"
                     value="Yes"
                     class="d-inline form-control"
-                    id="user-read-status"
                   />Yes
                   <input
                     type="radio"
@@ -103,13 +135,6 @@
                     class="d-inline form-control"
                     id="user-read-status"
                   />No
-                </div>
-
-                <div class="form-group">
-                  <label for="user-comment" class="col-form-label"
-                    >Comment:</label
-                  >
-                  <textarea class="form-control" id="user-comment"></textarea>
                 </div>
               </form>
             </div>
@@ -121,7 +146,11 @@
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-primary">
+              <button
+                type="button"
+                class="btn btn-primary add-book"
+                data-dismiss="modal"
+              >
                 Add Book
               </button>
             </div>
@@ -148,6 +177,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script scr="app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
