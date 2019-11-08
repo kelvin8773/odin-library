@@ -1,123 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
     <link rel="stylesheet" href="app.css" />
 
     <title>Odin Library</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-dark bg-secondary flex justify-content-center">
-        <a class="navbar-brand font-weight-bold" href="/">
-            <h1>Odin Library</h1>
-        </a>
+      <a class="navbar-brand font-weight-bold" href="/">
+        <h1>Odin Library</h1>
+      </a>
     </nav>
 
     <div id="main" class="container mt-4">
-        <!-- add book button   -->
-        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#addBookModal" data-whatever="@book">
-      Add Books to Library
-    </button>
+      <!-- add book button   -->
+      <button
+        type="button"
+        class="btn btn-primary mx-auto"
+        data-toggle="modal"
+        data-target="#addBookModal"
+        data-whatever="@book"
+      >
+        Add Books to Library
+      </button>
 
-        <hr class="my-3" />
+      <hr class="my-3" />
 
-        <div class="row">
-            <header class="col">
-                <h2 class="h2">Books</h2>
-            </header>
+      <div class="row">
+        <header class="col">
+          <h2 class="h2">Books</h2>
+        </header>
+      </div>
+      <div class="row">
+        <div class="col">
+          <section class="books"></section>
         </div>
-        <div class="row">
-            <div class="col">
-                <section class="books"></section>
+      </div>
+
+      <!-- add book modal   -->
+      <div
+        class="modal fade"
+        id="addBookModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Book Info</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-        </div>
-
-        <!-- add book modal   -->
-        <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Book Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="add-book-form">
-                            <div class="form-group">
-                                <label for="title" class="col-form-label">Book Title:</label>
-                                <input type="text" class="form-control" name="title" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="genre" class="col-form-label">Genre</label>
-
-                                <select multiple name="genre" class="form-control">
-                                  <option value="classic">Classic</option>
-                                  <option value="novel">Novel</option>
-                                  <option value="comedy">Comedy</option>
-                                  <option value="fiction">Fiction</option>
-                                  <option value="others">Others</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="author" class="col-form-label">Author</label>
-                                <input type="text" class="form-control" name="author" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="description" class="col-form-label">description:</label>
-                                <textarea class="form-control" name="description"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="price" class="col-form-label">Price: </label>
-                                <input type="number" class="form-control" name="price" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="numOfPages" class="col-form-label">Number of Pages</label>
-                                <input type="number" class="form-control" name="numOfPages" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="read_status" class="col-form-label">
-                                  Read Status:
-                                </label>
-                                <input type="radio" name="read_status" value="Yes" class="d-inline form-control" id="user-read-status" />Yes
-                                <input type="radio" name="user-read-status" value="No" class="d-inline form-control" id="user-read-status" />No
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                          Cancel
-                        </button>
-                        <button type="button" class="btn btn-primary add-book" data-dismiss="modal">
-                          Add Book
-                        </button>
-                    </div>
+            <div class="modal-body">
+              <form class="add-book-form">
+                <div class="form-group">
+                  <label for="title" class="col-form-label">Book Title:</label>
+                  <input type="text" class="form-control" name="title" />
                 </div>
+
+                <div class="form-group">
+                  <label for="genre" class="col-form-label">Genre:</label>
+
+                  <select class="custom-select" name="genre">
+                    <option selected>Select a genre for this book -></option>
+                    <option value="classic">Classic</option>
+                    <option value="novel">Novel</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="author" class="col-form-label">Author:</label>
+                  <input type="text" class="form-control" name="author" />
+                </div>
+
+                <div class="form-group">
+                  <label for="description" class="col-form-label"
+                    >description:</label
+                  >
+                  <textarea class="form-control" name="description"></textarea>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="price" class="col-form-label">Price: </label>
+                    <input type="number" class="form-control" name="price" />
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="numOfPages" class="col-form-label"
+                      >Number of Pages</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="numOfPages"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="custom-control custom-switch">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      name="read_status"
+                      id="read_status_switch"
+                      value=""
+                    />
+                    <label class="custom-control-label" for="read_status_switch"
+                      >Have You read the Book?</label
+                    >
+                  </div>
+                </div>
+              </form>
             </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary add-book"
+                data-dismiss="modal"
+              >
+                Add Book
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
