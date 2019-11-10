@@ -1,31 +1,33 @@
 let myLibrary = createLibrary(localStorage.getItem("books")) || [];
 
 function init() {
-  myLibrary.push(
-    new Book(
-      (title = "The Hobbit"),
-      (genre = "fiction"),
-      (author = "J.R.R. Tolkien"),
-      (description =
-        "The Hobbit, or There and Back Again, is a children's fantasy novel by English author J. R. R. Tolkien."),
-      (price = 20.99),
-      (numOfPages = 420),
-      (read_status = "")
-    )
-  );
+  if (myLibrary.length === 0) {
+    myLibrary.push(
+      new Book(
+        (title = "The Hobbit"),
+        (genre = "fiction"),
+        (author = "J.R.R. Tolkien"),
+        (description =
+          "The Hobbit, or There and Back Again, is a children's fantasy novel by English author J. R. R. Tolkien."),
+        (price = 20.99),
+        (numOfPages = 420),
+        (read_status = "")
+      )
+    );
 
-  myLibrary.push(
-    new Book(
-      (title = "Learning JavaScript Design Patterns"),
-      (genre = "others"),
-      (author = "Addy Osmani"),
-      (description =
-        "With Learning JavaScript Design Patterns, you’ll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language."),
-      (price = 49.99),
-      (numOfPages = 520),
-      (read_status = "")
-    )
-  );
+    myLibrary.push(
+      new Book(
+        (title = "Learning JavaScript Design Patterns"),
+        (genre = "others"),
+        (author = "Addy Osmani"),
+        (description =
+          "With Learning JavaScript Design Patterns, you’ll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language."),
+        (price = 49.99),
+        (numOfPages = 520),
+        (read_status = "")
+      )
+    );
+  }
 }
 
 function createLibrary(booksData) {
@@ -129,51 +131,63 @@ function createBookCard(
 ) {
   if (read_status) {
     return `
-          <article class="card">
-          <section class="card-body" style="max-width: 400px;">
-            <h5 class="card-title">${title}</h5>
-            <h6 class="card-subtitle mb-2">Genre: ${genre}</h6>
-            <h6 class="card-subtitle mb-2">Author: ${author}</h6>
-            <br />
-            <h6 class="card-subtitle mb-2">Price: €${price}</h6>
-            <h6 class="card-subtitle mb-3">Number of pages: ${numOfPages}</h6>
-            <p class="card-text">${description}</p>
-            <div class="d-flex">
-              <div class="mr-2">
-                <button class="btn btn-outline-success read-status" data-book="${id}">
-                  Read
-                </button>
-                <button class="btn btn-outline-danger remove-book" data-book="${id}">
-                  Remove
-                </button>
-              </div>
+          <article class="card text-primary mb-3" style="max-width: 500px;">
+          <div class="row no-gutters">
+            <div class="col-md-2">
+            <img src="book-cover-placeholder.jpg" class="card-img-top" alt="Book Cover">
             </div>
-          </section>
+            <div class="col-md-10">
+              <section class="card-body" >
+                <h5 class="card-title">${title}</h5>
+                <h6 class="card-subtitle mb-2">Genre: ${genre}</h6>
+                <h6 class="card-subtitle mb-2">Author: ${author}</h6>
+                <br />
+                <h6 class="card-subtitle mb-2">Price: €${price}</h6>
+                <h6 class="card-subtitle mb-3">Number of pages: ${numOfPages}</h6>
+                <p class="card-text"><small>${description}</small></p>
+                <div class="d-flex">
+                  <div class="mr-2">
+                    <button class="btn btn-outline-success read-status" data-book="${id}">
+                      Read
+                    </button>
+                    <button class="btn btn-outline-danger remove-book" data-book="${id}">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
         </article>
           `;
   } else {
     return `
-          <article class="card">
-          <section class="card-body" style="max-width: 400px;">
-            <h5 class="card-title">${title}</h5>
-            <h6 class="card-subtitle mb-2">Genre: ${genre}</h6>
-            <h6 class="card-subtitle mb-2">Author: ${author}</h6>
-            <br />
-            <h6 class="card-subtitle mb-2">Price: €${price}</h6>
-            <h6 class="card-subtitle mb-3">Number of pages: ${numOfPages}</h6>
-            <p class="card-text">${description}</p>
-            <div class="d-flex">
-              <div class="mr-2">
-                <button class="btn btn-outline-info read-status" data-book="${id}">
-                  Not Read
-                </button>
-                <button class="btn btn-outline-danger remove-book" data-book="${id}">
-                  Remove
-                </button>
+        <article class="card text-primary mb-3" style="max-width: 500px;">
+        <div class="row no-gutters">
+          <div class="col-md-2">
+          <img src="book-cover-placeholder.jpg" class="card-img-top" alt="Book Cover">
+          </div>
+          <div class="col-md-10">
+            <section class="card-body" >
+              <h5 class="card-title">${title}</h5>
+              <h6 class="card-subtitle mb-2">Genre: ${genre}</h6>
+              <h6 class="card-subtitle mb-2">Author: ${author}</h6>
+              <br />
+              <h6 class="card-subtitle mb-2">Price: €${price}</h6>
+              <h6 class="card-subtitle mb-3">Number of pages: ${numOfPages}</h6>
+              <p class="card-text"><small>${description}</small></p>
+              <div class="d-flex">
+                <div class="mr-2">
+                  <button class="btn btn-outline-info read-status" data-book="${id}">
+                    Not Read
+                  </button>
+                  <button class="btn btn-outline-danger remove-book" data-book="${id}">
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          </section>
-        </article>
+            </section>
+          </div>
+      </article>
             `;
   }
 }
